@@ -19,19 +19,23 @@ public class BookingSection {
     private boolean seatBookStatusReport(int checkSeat) {
         var planeSeats = airlineSeats.getSeats();
         for (int i = 0; i < planeSeats.length; i++) {
-            if(planeSeats[checkSeat]) return true;
+            if(planeSeats[checkSeat -1]) return true;
         }
         return false;
     }
 
     private void setSeats(int seatClass, boolean[] planeSeats) {
         if (seatClass > 0 && seatClass < 6) {
-            planeSeats[seatClass] = true;
+            planeSeats[seatClass -1] = true;
             System.out.printf("You have  successfully booked a seat at %d in economy class%n", seatClass);
         }
         if (seatClass >= 6 && seatClass <= 10){
-            planeSeats[seatClass] = true;
+            planeSeats[seatClass -1] = true;
             System.out.printf("You have  successfully booked a seat at %d in first class%n", seatClass);
         }
+    }
+
+    public void viewBookedSeats() {
+        airlineSeats.viewSeats();
     }
 }
